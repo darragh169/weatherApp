@@ -13,12 +13,19 @@
 			<div data-bind='with: Weather'>
 				<div class="row">
 		            <div class="col-lg-12">
-		                <h1 class="page-header"> Weather </h1>
+		                <h1 class="page-header"> Weather App</h1>
 		            </div>
 	        	</div>
 			  <div data-bind="with: City">
 			     <h3 data-bind='text: name'></h3>
 			  </div>
+			  <div class="row">
+	            <div class="col-lg-12">
+	            	<label for="cityInput">City: </label>
+	                <input id='cityInput' type="text" data-bind="value: inputChange" />
+	                <a class='btn btn-primary' data-bind="click: $parent.getCityWeather">Go</a>
+	            </div>
+	          </div>
 			  <div class="row">
 			      <ul class='availableDays'>
 			         <span data-bind='foreach: Days'>

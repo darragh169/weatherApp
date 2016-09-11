@@ -23,6 +23,8 @@ function WeatherModel(data){
     self.chart = ko.observable({
       days: self.Days()
     });
+
+    self.inputChange = ko.observable();
 }
 
 function CityModel(data) {
@@ -49,10 +51,17 @@ function AppViewModel() {
     self.getData = function(){
         $.getJSON("http://api.openweathermap.org/data/2.5/forecast/daily?q=vancouver&APPID=ad1b1e8a90a419b8bff9b0759abf440a&units=imperial", function(data) {
             var WeatherData = new WeatherModel(data)
-
             self.Weather(WeatherData);
         });    
     }
+
+    self.getCityWeather = function(){
+        $.getJSON("http://api.openweathermap.org/data/2.5/forecast/daily?q="+self.Weather().inputChange()+"&APPID=ad1b1e8a90a419b8bff9b0759abf440a&units=imperial", function(data) {
+            var WeatherData = new WeatherModel(data)
+            self.Weather(WeatherData);
+        });    
+    }
+
     self.getData();
 }
 
@@ -107,10 +116,6 @@ ko.bindingHandlers.chart = {
               name: 'Day Temperature',
               data: Daytemperatures
           }
-/*         ,{
-              name: 'John',
-              data: [5, 7, 3]
-          }*/
           ]
       });
     },
