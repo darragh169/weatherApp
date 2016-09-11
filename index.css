@@ -1,16 +1,19 @@
 .availableDays{
 	margin-top: 10px;
 	list-style: none;
+	text-align:center;
 }
+
 .availableDay{
 	display: inline-block;
 	border: 1px solid black;
 	padding: 5px;
 	cursor: pointer;
 }
+
 .dataBlock{
 	display: inline-block;
-	/*width: 400px;*/
+	width: 98%;
 	height: 600px;
 	border: 1px solid black;
 	/*margin: 5px;*/

@@ -3,7 +3,6 @@ function WeatherModel(data){
 
     self.City = ko.observable(new CityModel(data.city));
 
-    //TODO: format this
     var mappedDays = [];
     for (var i = data.list.length - 1; i >= 0; i--) {
        mappedDays[i] = new DayModel(data.list[i])
@@ -64,9 +63,10 @@ ko.bindingHandlers.map = {
             ko.utils.unwrapObservable(mapObj.lat),
             ko.utils.unwrapObservable(mapObj.lng));
 
-        var mapOptions = { center: latLng,
-                          zoom: 5, 
-                          mapTypeId: google.maps.MapTypeId.ROADMAP
+        var mapOptions = {
+          center: latLng,
+          zoom: 5, 
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         mapObj.googleMap = new google.maps.Map(element, mapOptions);
