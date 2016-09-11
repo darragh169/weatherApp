@@ -1,0 +1,8 @@
+.availableDays{
+	list-style: none;
+}
+.availableDay{
+	display: inline-block;
+	border: 1px solid black;
+	padding: 5px;
+}

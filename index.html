@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Weather App</title>
-	<script type="text/javascript" src="jquery-3.1.0.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+	<meta charset="utf-8">
+	<link type="text/css" rel="stylesheet" href="bootstrap.css" >
+	<link type="text/css" rel="stylesheet" href="index.css" >
 </head>
 <body>
-
+	<header>
+		<h2>Weather App</h2>
+	</header>
+		<div class='container-fluid'>
+			<div id="WeatherApp">
+				<div data-bind='with: Weather'>
+					<div data-bind="with: City">
+						<h3 data-bind='text: name'></h3>
+					</div>
+					<ul class='availableDays'>
+						<span data-bind='foreach: Days'>
+							<li data-bind="text: datetime" class="availableDay"></li>
+						</span>
+					</ul>
+				<div>
+			</div>
+		</div>
+	<footer>
+		
+	</footer>
+	<script type="text/javascript" src="jquery-3.1.0.js"></script>
+	<script type="text/javascript" src="bootstrap.js"></script>
+	<script type="text/javascript" src="knockout.js"></script>
+	<script type="text/javascript" src="moment.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </body>
+
 </html>

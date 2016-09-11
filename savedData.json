@@ -1,0 +1,187 @@
+{
+  "data": {
+    "city": {
+      "id": 6173331,
+      "name": "Vancouver",
+      "coord": {
+        "lon": -123.119339,
+        "lat": 49.24966
+      },
+      "country": "CA",
+      "population": 0
+    },
+    "cod": "200",
+    "message": 0.0301,
+    "cnt": 7,
+    "list": [
+      {
+        "dt": 1473537600,
+        "temp": {
+          "day": 61.12,
+          "min": 59.04,
+          "max": 61.12,
+          "night": 59.04,
+          "eve": 61.12,
+          "morn": 61.12
+        },
+        "pressure": 1011.89,
+        "humidity": 100,
+        "weather": [
+          {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02n"
+          }
+        ],
+        "speed": 4.07,
+        "deg": 266,
+        "clouds": 20
+      },
+      {
+        "dt": 1473624000,
+        "temp": {
+          "day": 68.83,
+          "min": 57.34,
+          "max": 68.9,
+          "night": 57.34,
+          "eve": 64.35,
+          "morn": 59.07
+        },
+        "pressure": 1016.19,
+        "humidity": 76,
+        "weather": [
+          {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+          }
+        ],
+        "speed": 4.45,
+        "deg": 284,
+        "clouds": 0
+      },
+      {
+        "dt": 1473710400,
+        "temp": {
+          "day": 68.9,
+          "min": 55.31,
+          "max": 68.9,
+          "night": 55.31,
+          "eve": 62.19,
+          "morn": 56.19
+        },
+        "pressure": 1018.9,
+        "humidity": 66,
+        "weather": [
+          {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+          }
+        ],
+        "speed": 3.62,
+        "deg": 316,
+        "clouds": 0
+      },
+      {
+        "dt": 1473796800,
+        "temp": {
+          "day": 65.97,
+          "min": 53.29,
+          "max": 66.47,
+          "night": 54.34,
+          "eve": 60.53,
+          "morn": 53.29
+        },
+        "pressure": 1013.22,
+        "humidity": 69,
+        "weather": [
+          {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+          }
+        ],
+        "speed": 2.95,
+        "deg": 263,
+        "clouds": 0
+      },
+      {
+        "dt": 1473883200,
+        "temp": {
+          "day": 61.75,
+          "min": 52,
+          "max": 63.73,
+          "night": 55.24,
+          "eve": 63.73,
+          "morn": 52
+        },
+        "pressure": 994.2,
+        "humidity": 0,
+        "weather": [
+          {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+          }
+        ],
+        "speed": 1.88,
+        "deg": 150,
+        "clouds": 29
+      },
+      {
+        "dt": 1473969600,
+        "temp": {
+          "day": 58.71,
+          "min": 51.69,
+          "max": 62.55,
+          "night": 55.56,
+          "eve": 62.55,
+          "morn": 51.69
+        },
+        "pressure": 1001.43,
+        "humidity": 0,
+        "weather": [
+          {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+          }
+        ],
+        "speed": 1.07,
+        "deg": 202,
+        "clouds": 46
+      },
+      {
+        "dt": 1474056000,
+        "temp": {
+          "day": 58.84,
+          "min": 52.66,
+          "max": 63.12,
+          "night": 56.34,
+          "eve": 63.12,
+          "morn": 52.66
+        },
+        "pressure": 1002.36,
+        "humidity": 0,
+        "weather": [
+          {
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10d"
+          }
+        ],
+        "speed": 0.36,
+        "deg": 185,
+        "clouds": 40
+      }
+    ]
+  }
+}
