@@ -9,6 +9,7 @@
 	border: 1px solid black;
 	padding: 5px;
 	cursor: pointer;
+	margin: 5px;
 }
 
 .dataBlock{
@@ -28,4 +29,12 @@
 	height: 90%;
 	width: 90%;
 	margin: 0 auto;
+}
+
+.selected{
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.unselected{
+	
 }

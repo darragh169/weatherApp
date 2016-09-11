@@ -15,6 +15,10 @@ function WeatherModel(data){
         self.currentDay(item);
     };
 
+    self.isCurrentDay = function(item){
+        return self.currentDay().datetime === item.datetime;
+    };
+
     self.map =  ko.observable({
         lat: ko.observable(self.City().lat()),
         lng: ko.observable(self.City().lng())
@@ -31,6 +35,12 @@ function CityModel(data) {
     var self = this;
 
     self.name = ko.observable(data.name);
+
+    self.country = ko.observable(data.country);
+
+    self.formattedName = ko.computed(function() {
+      return self.name() + ", " + self.country();
+    });
 
     self.lat = ko.observable(data.coord.lat);
     self.lng = ko.observable(data.coord.lon);
@@ -50,17 +60,27 @@ function AppViewModel() {
     
     self.getData = function(){
         $.getJSON("http://api.openweathermap.org/data/2.5/forecast/daily?q=vancouver&APPID=ad1b1e8a90a419b8bff9b0759abf440a&units=imperial", function(data) {
-            var WeatherData = new WeatherModel(data)
-            self.Weather(WeatherData);
+            if(data.cod === '200'){
+              var WeatherData = new WeatherModel(data)
+              self.Weather(WeatherData);
+            }else{
+
+            }
         });    
     }
 
     self.getCityWeather = function(){
         $.getJSON("http://api.openweathermap.org/data/2.5/forecast/daily?q="+self.Weather().inputChange()+"&APPID=ad1b1e8a90a419b8bff9b0759abf440a&units=imperial", function(data) {
-            var WeatherData = new WeatherModel(data)
-            self.Weather(WeatherData);
+            if(data.cod === '200'){
+              var WeatherData = new WeatherModel(data)
+              self.Weather(WeatherData);
+            }else{
+              self.appError(true)
+            }
         });    
     }
+
+    self.appError = ko.observable(false);
 
     self.getData();
 }
