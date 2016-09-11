@@ -1,8 +1,28 @@
 .availableDays{
+	margin-top: 10px;
 	list-style: none;
 }
 .availableDay{
 	display: inline-block;
 	border: 1px solid black;
 	padding: 5px;
+	cursor: pointer;
+}
+.dataBlock{
+	display: inline-block;
+	/*width: 400px;*/
+	height: 600px;
+	border: 1px solid black;
+	/*margin: 5px;*/
+	padding: 5px;
+}
+
+.dataBlock h4 {
+	text-align: center;
+}  
+
+#mapDiv{
+	height: 90%;
+	width: 90%;
+	margin: 0 auto;
 }

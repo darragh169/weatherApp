@@ -3,44 +3,43 @@ function WeatherModel(data){
 
     self.City = ko.observable(new CityModel(data.city));
 
+    //TODO: format this
     var mappedDays = [];
     for (var i = data.list.length - 1; i >= 0; i--) {
        mappedDays[i] = new DayModel(data.list[i])
     }
 
     self.Days = ko.observableArray(mappedDays);
+    self.currentDay = ko.observable(mappedDays[0]);
+
+    self.setCurrentDay = function(item, e){
+        self.currentDay(item);
+    };
+
+    self.map =  ko.observable({
+        lat: ko.observable(self.City().lat()),
+        lng: ko.observable(self.City().lng())
+    });
+
+    self.chart = ko.observable({
+      days: self.Days()
+    });
 }
 
 function CityModel(data) {
-    this.name = ko.observable(data.name);
+    var self = this;
+
+    self.name = ko.observable(data.name);
+
+    self.lat = ko.observable(data.coord.lat);
+    self.lng = ko.observable(data.coord.lon);
 }
 
 function DayModel(data){
     var self = this;
 
     self.datetime = moment.unix(data.dt).format('dddd Do YYYY');
-/*      "dt": 1473537600,
-        "temp": {
-          "day": 61.12,
-          "min": 59.04,
-          "max": 61.12,
-          "night": 59.04,
-          "eve": 61.12,
-          "morn": 61.12
-        },
-        "pressure": 1011.89,
-        "humidity": 100,
-        "weather": [
-          {
-            "id": 801,
-            "main": "Clouds",
-            "description": "few clouds",
-            "icon": "02n"
-          }
-        ],
-        "speed": 4.07,
-        "deg": 266,
-        "clouds": 20*/
+    self.temp = data.temp;
 }
 
 function AppViewModel() {
@@ -57,5 +56,67 @@ function AppViewModel() {
     }
     self.getData();
 }
+
+ko.bindingHandlers.map = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var mapObj = ko.utils.unwrapObservable(valueAccessor());
+        var latLng = new google.maps.LatLng(
+            ko.utils.unwrapObservable(mapObj.lat),
+            ko.utils.unwrapObservable(mapObj.lng));
+
+        var mapOptions = { center: latLng,
+                          zoom: 5, 
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        mapObj.googleMap = new google.maps.Map(element, mapOptions);
+    }
+};
+
+ko.bindingHandlers.chart = {
+
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+      var chartObj = ko.utils.unwrapObservable(valueAccessor());
+
+      var dates =  chartObj.days.map(function(item){
+        return item.datetime;
+      });
+
+      var Daytemperatures = chartObj.days.map(function(item){
+        return item.temp.day;
+      });
+
+      var chart1 = new Highcharts.Chart({
+          chart: {
+              renderTo: element,
+              type: 'line'
+          },
+          title: {
+              text: 'Temperature for the Week'
+          },
+          xAxis: {
+              categories: dates
+          },
+          yAxis: {
+              title: {
+                  text: 'Temperature'
+              }
+          },
+          series: [{
+              name: 'Day Temperature',
+              data: Daytemperatures
+          }
+/*         ,{
+              name: 'John',
+              data: [5, 7, 3]
+          }*/
+          ]
+      });
+    },
+    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+    }
+};
 
 ko.applyBindings(new AppViewModel(), document.getElementById('WeatherApp'));

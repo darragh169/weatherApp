@@ -1,37 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Weather App</title>
-	<meta charset="utf-8">
-	<link type="text/css" rel="stylesheet" href="bootstrap.css" >
-	<link type="text/css" rel="stylesheet" href="index.css" >
-</head>
-<body>
-	<header>
-		<h2>Weather App</h2>
-	</header>
-		<div class='container-fluid'>
-			<div id="WeatherApp">
-				<div data-bind='with: Weather'>
-					<div data-bind="with: City">
-						<h3 data-bind='text: name'></h3>
-					</div>
-					<ul class='availableDays'>
-						<span data-bind='foreach: Days'>
-							<li data-bind="text: datetime" class="availableDay"></li>
-						</span>
-					</ul>
-				<div>
-			</div>
-		</div>
-	<footer>
-		
-	</footer>
-	<script type="text/javascript" src="jquery-3.1.0.js"></script>
-	<script type="text/javascript" src="bootstrap.js"></script>
-	<script type="text/javascript" src="knockout.js"></script>
-	<script type="text/javascript" src="moment.js"></script>
-	<script type="text/javascript" src="main.js"></script>
-</body>
-
+   <head>
+      <title>Weather App</title>
+      <meta charset="utf-8">
+      <link type="text/css" rel="stylesheet" href="bootstrap.css" >
+      <link type="text/css" rel="stylesheet" href="index.css" >
+   </head>
+   <body>
+      <header>
+         <h2>Weather App</h2>
+      </header>
+      <section>
+         <div id="WeatherApp">
+            <div class='container-fluid'>
+               <div data-bind='with: Weather'>
+                  <div data-bind="with: City">
+                     <h3 data-bind='text: name'></h3>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-4 dataBlock" data-bind="with: currentDay">
+                        <h4 data-bind="text: datetime"></h4>
+                        <p data-bind='text: "Day Temperature: " + temp.day'></p>
+                        <p data-bind='text: "Min Temperature: " + temp.min'></p>
+                        <p data-bind='text: "Max Temperature: " + temp.max'></p>
+                        <p data-bind='text: "Night Temperature: " + temp.night'></p>
+                        <p data-bind='text: "Morning Temperature: " + temp.morn'></p>
+                        <p data-bind='text: "Evening Temperature: " + temp.eve'></p>
+                     </div>
+                     <div class="col-md-4 dataBlock">
+                     	<h4 data-bind="text: 'Map'"></h4>
+                     	<div id="mapDiv" data-bind="map:map"></div>
+                     </div>
+                     <div class="col-md-4 dataBlock">
+                     	<h4 data-bind="text: 'Chart'"></h4>
+                     	<div data-bind="chart:chart"></div>
+                     </div>
+                  </div>
+                  <div class="row">
+	                  <ul class='availableDays'>
+	                     <span data-bind='foreach: Days'>
+	                        <li data-bind="text: datetime, click: $parent.setCurrentDay" class="availableDay"></li>
+	                     </span>
+	                  </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <footer>
+      </footer>
+      <script type="text/javascript" src="jquery-3.1.0.js"></script>
+      <script type="text/javascript" src="moment.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR5fLZCGFVdeLySiqfjuk7GkAC_ijmfk0" async defer></script>
+      <script type="text/javascript" src="highCharts.js"></script>
+      <script type="text/javascript" src="bootstrap.js"></script>
+      <script type="text/javascript" src="knockout.js"></script>
+      <script type="text/javascript" src="main.js"></script>
+   </body>
 </html>
