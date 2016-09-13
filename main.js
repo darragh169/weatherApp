@@ -51,6 +51,8 @@ function DayModel(data){
 
     self.datetime = moment.unix(data.dt).format('dddd Do YYYY');
     self.temp = data.temp;
+
+    self.weather = ko.observable(data.weather[0]);
 }
 
 function AppViewModel() {
@@ -143,5 +145,22 @@ ko.bindingHandlers.chart = {
 
     }
 };
+
+ko.bindingHandlers.animateChange = {
+   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        debugger;
+   },
+
+   update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        var value = valueAccessor();
+        var valueUnwrapped = ko.unwrap(value);
+
+        $(element).find('#weatherInfoContainer').fadeOut().fadeIn('fast');
+        //if (valueUnwrapped == true)
+        //    $(element).fadeIn(); // Make the element visible
+        //else
+        //    $(element).fadeIn(); 
+   }
+}
 
 ko.applyBindings(new AppViewModel(), document.getElementById('WeatherApp'));

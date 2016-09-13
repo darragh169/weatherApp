@@ -41,15 +41,20 @@
 			      </ul>
 			  </div>
 			  <div class="row">
-			     <div class="col-md-4" data-bind="with: currentDay">
+			     <div class="col-md-4" data-bind="with: currentDay, animateChange: currentDay">
 			     	<div class="dataBlock">
-				        <h4 data-bind="text: datetime"></h4>
-				        <p data-bind='text: "Day Temperature: " + temp.day'></p>
-				        <p data-bind='text: "Min Temperature: " + temp.min'></p>
-				        <p data-bind='text: "Max Temperature: " + temp.max'></p>
-				        <p data-bind='text: "Night Temperature: " + temp.night'></p>
-				        <p data-bind='text: "Morning Temperature: " + temp.morn'></p>
-				        <p data-bind='text: "Evening Temperature: " + temp.eve'></p>
+			     		<div id="weatherInfoContainer">
+					        <h4 data-bind="text: datetime"></h4>
+					        <div>
+					        	<img data-bind="attr: { src: 'http://openweathermap.org/img/w/' + weather().icon + '.png' }" />
+					        </div>
+					        <p data-bind='text: "Day Temperature: " + temp.day'></p>
+					        <p data-bind='text: "Min Temperature: " + temp.min'></p>
+					        <p data-bind='text: "Max Temperature: " + temp.max'></p>
+					        <p data-bind='text: "Night Temperature: " + temp.night'></p>
+					        <p data-bind='text: "Morning Temperature: " + temp.morn'></p>
+					        <p data-bind='text: "Evening Temperature: " + temp.eve'></p>
+				        </div>
 			        </div>
 			     </div>
 			  	 <div class="col-md-4">
