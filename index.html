@@ -17,22 +17,21 @@
 	            </div>
         	  </div>
         	  <div id="errorMessage" class="alert-danger" data-bind="visible: $parent.appError()">
-        	  <div class="row">
-					<p>Could not retrieve City Weather</p>
-			  </div>
-			  </div>
-        	  <div class="row">
-				  <div data-bind="with: City">
-				     <h3 data-bind='text: formattedName'></h3>
+	        	  <div class="row">
+						<p>Could not retrieve City Weather</p>
 				  </div>
 			  </div>
-			  <div class="row">
-	            <div class="col-lg-12">
-	            	<label for="cityInput">City: </label>
-	                <input id='cityInput' type="text" data-bind="value: inputChange" />
-	                <a class='btn btn-primary' data-bind="click: $parent.getCityWeather">Go</a>
-	            </div>
-	          </div>
+			  <form class="form-inline">
+				  <div class="form-group">
+				    <div class="input-group">
+				      <input type="text" class="form-control" id="exampleInputAmount" data-bind="value: inputChange" placeholder="City">
+				    </div>
+				  </div>
+				  <button type="submit" class="btn btn-primary" data-bind="click: $parent.getCityWeather">Go</button>
+				  <span class="formattedCityName nav-pills" data-bind="with: City">
+				    <span data-bind='text: formattedName'></span>
+				  </span>
+			  </form>
 			  <div class="row">
 			      <ul class='availableDays'>
 			         <span data-bind='foreach: Days'>
@@ -48,19 +47,19 @@
 					        <div>
 					        	<img data-bind="attr: { src: 'http://openweathermap.org/img/w/' + weather().icon + '.png' }" />
 					        </div>
-					        <p data-bind='text: "Day Temperature: " + temp.day'></p>
-					        <p data-bind='text: "Min Temperature: " + temp.min'></p>
-					        <p data-bind='text: "Max Temperature: " + temp.max'></p>
-					        <p data-bind='text: "Night Temperature: " + temp.night'></p>
-					        <p data-bind='text: "Morning Temperature: " + temp.morn'></p>
-					        <p data-bind='text: "Evening Temperature: " + temp.eve'></p>
+					        <p data-bind='text: "Day Temperature: " + temp.day  + "&deg;F"'></p>
+					        <p data-bind='text: "Min Temperature: " + temp.min + "&deg;F"'></p>
+					        <p data-bind='text: "Max Temperature: " + temp.max + "&deg;F"'></p>
+					        <p data-bind='text: "Night Temperature: " + temp.night + "&deg;F"'></p>
+					        <p data-bind='text: "Morning Temperature: " + temp.morn + "&deg;F"'></p>
+					        <p data-bind='text: "Evening Temperature: " + temp.eve + "&deg;F"'></p>
 				        </div>
 			        </div>
 			     </div>
 			  	 <div class="col-md-4">
 				     <div class="dataBlock">
 				     	<h4 data-bind="text: 'Chart'"></h4>
-				     	<div data-bind="chart:chart">
+				     	<div id="chartContainer" data-bind="chart:chart">
 				     		
 				     	</div>
 				     </div>

@@ -147,15 +147,11 @@ ko.bindingHandlers.chart = {
 };
 
 ko.bindingHandlers.animateChange = {
-   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-        debugger;
-   },
-
    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var value = valueAccessor();
         var valueUnwrapped = ko.unwrap(value);
 
-        $(element).find('#weatherInfoContainer').fadeOut().fadeIn('fast');
+        $(element).find('#weatherInfoContainer').hide().fadeIn();
         //if (valueUnwrapped == true)
         //    $(element).fadeIn(); // Make the element visible
         //else
